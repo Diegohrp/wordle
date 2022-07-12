@@ -44,6 +44,7 @@ const checkWord = () => {
     else {
       //Obtenemos el color correspondiente para cada casilla según la condición
       //Generamos un array con esos valores
+
       const gridColors = userAnswer.map((letter, index) => {
         if (letter === SECRET_WORD[level][index]) {
           return 'ok';
