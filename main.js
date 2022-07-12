@@ -20,6 +20,7 @@ const SECRET_WORD = [
   'DOLER',
   'FELIZ',
   'LOGRO',
+  'PIEZA',
 ];
 const ATTEMPTS = 6;
 let level = 0;
