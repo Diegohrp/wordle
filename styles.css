@@ -1,0 +1,272 @@
+:root {
+  --brand-color: #8EC1D6;
+  --dark-color: #3D4B5F;
+  --mid-color: #CBD5E1;
+  --light-color: #F8FAFC;
+  --right: rgb(12, 170, 12);
+  --wrong: rgb(199, 10, 10);
+  --maybe: #edc33b;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+body{
+  background-color: var(--dark-color);
+  font-family: 'Edu SA Beginner', cursive;
+}
+
+h2{
+  text-align: center;
+  font-size: 3rem;
+  color: var(--light-color);
+  margin: 20px 0;
+
+}
+
+p{
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: var(--mid-color);
+}
+
+main{
+  height: 90vh;
+  width: 100vw;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+ 
+}
+
+main .keyboard{
+  width: max(50%, 300px);
+  height: 110px;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+main .keyboard ul{
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(9,1fr);
+  gap: 5px;
+  place-items: center;
+}
+
+main .keyboard ul:first-child{
+  grid-template-columns: repeat(10,1fr);
+}
+
+main .keyboard ul li{
+  width: 100%;
+}
+
+main .keyboard ul li button{
+  width: 100%;
+  height: 30px;
+  background-color: var(--mid-color);
+  outline: none;
+  border: none;
+  color: var(--dark-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: 'Edu SA Beginner', cursive;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: -4px 4px 4px 0px rgba(0,0,0,0.67);
+}
+
+main .keyboard ul li button.wrong{
+  background-color:var(--wrong) ;
+  color: var(--light-color);
+}
+main .keyboard ul li button.maybe{
+  background-color:var(--maybe) ;
+  color: var(--light-color);
+}
+main .keyboard ul li button.ok{
+  background-color:var(--right) ;
+  color: var(--light-color);
+}
+
+main .keyboard ul li button:hover{
+  background-color: var(--brand-color);
+  color: var(--dark-color);
+ 
+}
+main .keyboard ul li button:active{
+  transform: scale(0.9);
+  box-shadow: none;
+}
+
+.grid{
+  width: max(50%, 300px);
+  height: 250px;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  border-radius: 3px;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.grid ul{
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  list-style: none;
+  gap: 8px;
+}
+
+.grid ul li{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--brand-color);
+  border-radius: 5px;
+  color: var(--mid-color);
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.grid ul li.ok{
+  border: 2px solid var(--right);
+  color:var(--right) ;
+  font-weight: bold;
+}
+
+.grid ul li.maybe{
+  border: 2px solid var(--maybe);
+  color:var(--maybe) ;
+  font-weight: bold;
+}
+
+.grid ul li.wrong{
+  border: 2px solid var(--wrong);
+  color:var(--wrong) ;
+  font-weight: bold;
+}
+
+.modal{
+ position: absolute;
+ top: 0;
+ bottom: 0;
+ left: 0;
+ right: 0;
+ background-color: rgba(0, 0, 0, 0.37);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ box-shadow: -4px 4px 4px 0px rgba(0,0,0,0.67);
+}
+
+.modal article{
+  width: max(30%,300px);
+  height: max(25%,250px);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--dark-color);
+  align-items: center;
+  border-radius: 10px;
+  
+}
+
+.modal article .score{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 3.5rem;
+  margin-bottom: 30px;
+  
+}
+
+.star{
+  color: #edc33b;
+}
+
+.no-star{
+  color: var(--mid-color);
+}
+
+.win{
+  color: var(--right);
+}
+.lose{
+  color: var(--wrong);
+}
+
+.next{
+  background-color: var(--brand-color);
+  height: 35px;
+  width: 50%;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Edu SA Beginner', cursive;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--dark-color);
+  cursor: pointer;
+  box-shadow: -4px 4px 4px 0px rgba(0,0,0,0.67);
+}
+
+.next:hover{
+  color: var(--light-color)
+}
+.next:active{
+  transform: scale(0.9);
+  box-shadow: none;
+}
+
+footer{
+  background-color: var(--brand-color);
+  width: 100vw;
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+footer a{
+  color: var(--dark-color);
+  margin-left: 8px;
+  text-decoration: none;
+}
+
+footer a:hover{
+  color: var(--light-color)
+}
+
+@media (max-height:450px) {
+  main{
+    height: auto
+  }
+  .grid{
+    width: max(50%, 300px);
+    height: 200px;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    border-radius: 3px;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .modal{
+    height: min(130%,500px)
+  }
+  footer{
+    position: relative;
+    margin-top: 20px;
+  }
+}
