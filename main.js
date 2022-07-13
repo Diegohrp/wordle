@@ -31,6 +31,24 @@ let score = 0;
 createKeyboard();
 createGrid();
 
+const findRepeated = (gridColors, letter, index) => {
+  //Array de índices de la respuesta del usuario
+  const indexes = userAnswer.map((item, index) => index);
+  /*Creamos un array donde los elementos son el índices de la respuesta del 
+  usuario donde la letra marcada en verde anteriormente se repite*/
+  const repeated = indexes.filter(
+    (item) => userAnswer[item] === letter
+  );
+  /*Si la letra en verde se repite en más lugares, ponerla en rojo en esos lugares
+  donde no debería estar. Así le decimos al usuario que la palabra tiene un número 
+  dado de veces esa letra*/
+  repeated.map((i) => {
+    if (i !== index && gridColors[i] !== 'ok') {
+      gridColors[i] = 'wrong';
+    }
+  });
+};
+
 //Comprobar respuesta
 const checkWord = () => {
   if (userAnswer.length === SECRET_WORD[level].length) {
@@ -42,16 +60,24 @@ const checkWord = () => {
     }
     //Caso en el que algunas son correctas o no lo son
     else {
-      //Obtenemos el color correspondiente para cada casilla según la condición
-      //Generamos un array con esos valores
+      let aux = SECRET_WORD[level].split('');
+      //Para los colores en la respuesta del usuario
+      const gridColors = [];
 
-      const gridColors = userAnswer.map((letter, index) => {
+      userAnswer.map((letter, index) => {
+        //Si la letra en la respuesta del usuario es igual a la SECRET_WORD
         if (letter === SECRET_WORD[level][index]) {
-          return 'ok';
-        } else if (SECRET_WORD[level].includes(letter)) {
-          return 'maybe';
+          gridColors[index] = 'ok';
+          /*Quitamos de aux esa letra para que en el else donde se 
+            verifica si incluye una letra, ya no tome esta en cuenta
+          */
+          aux[index] = '';
+          findRepeated(gridColors, letter, index);
+        } else if (aux.includes(letter)) {
+          gridColors[index] = 'maybe';
+          findRepeated(gridColors, letter, index);
         } else {
-          return 'wrong';
+          gridColors[index] = 'wrong';
         }
       });
       //Pintamos las casillas del color correspondiente
